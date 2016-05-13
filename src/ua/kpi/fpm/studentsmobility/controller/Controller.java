@@ -3,6 +3,8 @@ package ua.kpi.fpm.studentsmobility.controller;
 import  java.util.Scanner;
 import  java.util.regex.Pattern;
 
+import ua.kpi.fpm.studentsmobility.model.Faculty;
+import ua.kpi.fpm.studentsmobility.model.Model;
 import ua.kpi.fpm.studentsmobility.model.AcademicMobilityParticipant;
 import ua.kpi.fpm.studentsmobility.view.View;
 
@@ -32,14 +34,23 @@ public class Controller {
     // «postbox@com», «a.little.more.unusual98@dept.example.com»
     private static final String REGEX_EMAIL = "^[a-z0-9_-]*(\\.[a-z0-9_-]*)*@([a-z0-9_-]\\.*)*[a-z]{2,6}$";
     // «Lorem ipsum (1998-2000) -> '95.»
-    private static final String REGEX_COMMENT = "[A-Za-z0-9_-,\\(\\)<>' ]";
+    private static final String REGEX_COMMENT = "[A-Za-z0-9_,.;:()<>'\\- ]*";
+    // «04129»
+    private static final String REGEX_POSTAL_INDEX = "^[0-9]{5}$";
+    // «14th Street NW», «Khreshchatyk Street»
+    private static final String REGEX_STREET =
+            "^([A-Z]* )?([A-Z][a-z]*(-[A-Z][a-z]*)? )*([0-9]{1,5}th )?([A-Z][a-z]*)+( [A-Z]*)?$";
+    // «124a»
+    private static final String REGEX_HOUSE = "^[0-9]{1,3}[a-z]?$";
+    // «1234-1»
+    private static final String REGEX_APARTMENT_NUMBER = "^[0-9]{1,4}(-[0-9])?$";
 
     // Constructor
-    AcademicMobilityParticipant participant;
+    Model model;
     View view;
 
-    public Controller(AcademicMobilityParticipant participant, View view) {
-        this.participant  = participant;
+    public Controller(Model model, View view) {
+        this.model  = model;
         this.view = view;
     }
 
@@ -47,17 +58,31 @@ public class Controller {
     public void processUser() {
         Scanner sc = new Scanner(System.in);
 
-        String lastName = inputNewStringDataWithScanner(sc, REGEX_LAST_NAME, View.INPUT_LAST_NAME,
-                View.WRONG_INPUT_INT_DATA);
-        String firstName = inputNewStringDataWithScanner(sc, REGEX_FIRST_NAME, View.INPUT_FIRST_NAME,
-                View.WRONG_INPUT_INT_DATA);
-        String middleName = inputNewStringDataWithScanner(sc, REGEX_MIDDLE_NAME, View.INPUT_MIDDLE_NAME,
-                View.WRONG_INPUT_INT_DATA);
-        String mobilePhone = inputNewStringDataWithScanner(sc, REGEX_PHONE, View.INPUT_MOBILE_PHONE,
-                View.WRONG_INPUT_INT_DATA);
-        String homePhone = inputNewStringDataWithScanner(sc, REGEX_PHONE, View.INPUT_HOME_PHONE,
-                View.WRONG_INPUT_INT_DATA);
-        String email = inputNewStringDataWithScanner(sc, REGEX_EMAIL, View.INPUT_EMAIL, View.WRONG_INPUT_INT_DATA);
+        model.setLastName(inputNewStringDataWithScanner(sc, REGEX_LAST_NAME, View.INPUT_LAST_NAME,
+                View.WRONG_INPUT_INT_DATA));
+        model.setFirstName(inputNewStringDataWithScanner(sc, REGEX_FIRST_NAME, View.INPUT_FIRST_NAME,
+                View.WRONG_INPUT_INT_DATA));
+        model.setMiddleName(inputNewStringDataWithScanner(sc, REGEX_MIDDLE_NAME, View.INPUT_MIDDLE_NAME,
+                View.WRONG_INPUT_INT_DATA));
+        // contacts
+        model.setMobilePhone(inputNewStringDataWithScanner(sc, REGEX_PHONE, View.INPUT_MOBILE_PHONE,
+                View.WRONG_INPUT_INT_DATA));
+        model.setHomePhone(inputNewStringOptionalDataWithScanner(sc, REGEX_PHONE, View.INPUT_HOME_PHONE,
+                View.WRONG_INPUT_INT_DATA));
+        model.setEmail(inputNewStringDataWithScanner(sc, REGEX_EMAIL, View.INPUT_EMAIL, View.WRONG_INPUT_INT_DATA));
+        // home address
+        model.setHomePostalIndex(inputNewStringDataWithScanner(sc, REGEX_POSTAL_INDEX, View.INPUT_HOME_ADDRESS +
+                View.INPUT_POSTAL_INDEX, View.WRONG_INPUT_INT_DATA));
+        model.setHomeCity(inputNewStringDataWithScanner(sc, REGEX_CITY, View.INPUT_CITY,
+                View.WRONG_INPUT_INT_DATA));
+        model.setHomeStreet(inputNewStringDataWithScanner(sc, REGEX_STREET, View.INPUT_STREET,
+                View.WRONG_INPUT_INT_DATA));
+        model.setHomeHouse(inputNewStringDataWithScanner(sc, REGEX_HOUSE, View.INPUT_HOUSE, View.WRONG_INPUT_INT_DATA));
+        model.setHomeApartmentNumber(inputNewStringOptionalDataWithScanner(sc, REGEX_APARTMENT_NUMBER,
+                View.INPUT_APARTMENT_NUMBER, View.WRONG_INPUT_INT_DATA));
+        // faculty and course in KPI
+
+
         String comment = inputNewStringOptionalDataWithScanner(sc, REGEX_COMMENT, View.INPUT_COMMENT,
                 View.WRONG_INPUT_INT_DATA);
         // faculty
@@ -74,24 +99,15 @@ public class Controller {
         String arrive = inputNewStringDataWithScanner(sc, REGEX_DATE, View.INPUT_ARRIVE_DATE,
                 View.WRONG_INPUT_INT_DATA);
 
-        participant.setLastName(lastName);
-        participant.setFirstName(firstName);
-        participant.setMiddleName(middleName);
-        participant.setUnivCountry(country);
-        participant.setUnivCity(city);
-        participant.setUniv(institution);
-        participant.setDepartureDate(departure);
-        participant.setArriveDate(arrive);
-        participant.setMobilePhone(mobilePhone);
-        participant.setHomePhone(homePhone);
-        participant.setEmail(email);
-        participant.setComment(comment);
+    }
 
-        System.out.printf("%s %s %s %s %s %s %s %s %s %s %s %s", participant.getLastName(), participant.getFirstName(),
-                participant.getMiddleName(), participant.getUnivCountry(), participant.getUnivCity(),
-                participant.getUniv(), participant.getDepartureDate(), participant.getArriveDate(),
-                participant.getMobilePhone(), participant.getHomePhone(), participant.getEmail(),
-                participant.getComment());
+    private int inputFaculty(Scanner sc) {
+        view.printMessage(View.INPUT_FACULTY);
+        while( ! sc.hasNextInt()) {
+            view.printMessage(view.WRONG_INPUT_INT_DATA + view.INPUT_FACULTY);
+            sc.next();
+        }
+        return sc.nextInt();
 
     }
 

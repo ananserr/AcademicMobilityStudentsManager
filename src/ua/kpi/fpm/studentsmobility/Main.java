@@ -1,8 +1,7 @@
 package ua.kpi.fpm.studentsmobility;
 
 import ua.kpi.fpm.studentsmobility.controller.Controller;
-import ua.kpi.fpm.studentsmobility.model.AcademicMobilityParticipant;
-import ua.kpi.fpm.studentsmobility.model.ParticipantsList;
+import ua.kpi.fpm.studentsmobility.model.Model;
 import ua.kpi.fpm.studentsmobility.view.View;
 
 /**
@@ -12,10 +11,9 @@ public class Main {
 
     public static void main(String[] args) {
         // Initialization
-        ParticipantsList participantsList = new ParticipantsList();
-        AcademicMobilityParticipant academicMobilityParticipant = new AcademicMobilityParticipant();
+        Model model = new Model();
         View view = new View();
-        Controller controller = new Controller(academicMobilityParticipant, view);
+        Controller controller = new Controller(model, view);
 
         // Run
         controller.processUser();
