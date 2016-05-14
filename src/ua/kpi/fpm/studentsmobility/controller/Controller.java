@@ -59,27 +59,28 @@ public class Controller {
         Scanner sc = new Scanner(System.in);
 
         model.setLastName(inputNewStringDataWithScanner(sc, REGEX_LAST_NAME, View.INPUT_LAST_NAME,
-                View.WRONG_INPUT_INT_DATA));
+                View.WRONG_INPUT_LAST_NAME));
         model.setFirstName(inputNewStringDataWithScanner(sc, REGEX_FIRST_NAME, View.INPUT_FIRST_NAME,
-                View.WRONG_INPUT_INT_DATA));
+                View.WRONG_INPUT_FIRST_NAME));
         model.setMiddleName(inputNewStringDataWithScanner(sc, REGEX_MIDDLE_NAME, View.INPUT_MIDDLE_NAME,
-                View.WRONG_INPUT_INT_DATA));
+                View.WRONG_INPUT_MIDDLE_NAME));
         // contacts
         model.setMobilePhone(inputNewStringDataWithScanner(sc, REGEX_PHONE, View.INPUT_MOBILE_PHONE,
-                View.WRONG_INPUT_INT_DATA));
+                View.WRONG_INPUT_PHONE_NUMBER));
         model.setHomePhone(inputNewStringOptionalDataWithScanner(sc, REGEX_PHONE, View.INPUT_HOME_PHONE,
-                View.WRONG_INPUT_INT_DATA));
-        model.setEmail(inputNewStringDataWithScanner(sc, REGEX_EMAIL, View.INPUT_EMAIL, View.WRONG_INPUT_INT_DATA));
+                View.WRONG_INPUT_PHONE_NUMBER));
+        model.setEmail(inputNewStringDataWithScanner(sc, REGEX_EMAIL, View.INPUT_EMAIL, View.WRONG_INPUT_EMAIL));
         // home address
         model.setHomePostalIndex(inputNewStringDataWithScanner(sc, REGEX_POSTAL_INDEX, View.INPUT_HOME_ADDRESS +
-                View.INPUT_POSTAL_INDEX, View.WRONG_INPUT_INT_DATA));
+                View.INPUT_POSTAL_INDEX, View.WRONG_INPUT_POSTAL_INDEX));
         model.setHomeCity(inputNewStringDataWithScanner(sc, REGEX_CITY, View.INPUT_CITY,
-                View.WRONG_INPUT_INT_DATA));
+                View.WRONG_INPUT_CITY));
         model.setHomeStreet(inputNewStringDataWithScanner(sc, REGEX_STREET, View.INPUT_STREET,
-                View.WRONG_INPUT_INT_DATA));
-        model.setHomeHouse(inputNewStringDataWithScanner(sc, REGEX_HOUSE, View.INPUT_HOUSE, View.WRONG_INPUT_INT_DATA));
+                View.WRONG_INPUT_STREET));
+        model.setHomeHouse(inputNewStringDataWithScanner(sc, REGEX_HOUSE, View.INPUT_HOUSE,
+                View.WRONG_INPUT_HOUSE_NUMBER));
         model.setHomeApartmentNumber(inputNewStringOptionalDataWithScanner(sc, REGEX_APARTMENT_NUMBER,
-                View.INPUT_APARTMENT_NUMBER, View.WRONG_INPUT_INT_DATA));
+                View.INPUT_APARTMENT_NUMBER, View.WRONG_INPUT_APARTMENT_NUMBER));
         // faculty and course in KPI
 
 
