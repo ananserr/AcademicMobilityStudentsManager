@@ -11,15 +11,16 @@ public class View {
     public static final String INPUT_LAST_NAME = "Input last name: ";
     public static final String INPUT_FIRST_NAME = "Input first name: ";
     public static final String INPUT_MIDDLE_NAME = "Input middle name: ";
-    public static final String INPUT_COUNTRY = "Input country: ";
-    public static final String INPUT_INSTITUTION = "Input educational institution: ";
+    public static final String INPUT_INSTITUTION = "Input institution info.\n";
+    public static final String INPUT_COUNTRY = "country: ";
+    public static final String INPUT_INSTITUTION_NAME = "educational institution: ";
     public static final String INPUT_DEPARTURE_DATE = "Input departure date: ";
     public static final String INPUT_ARRIVE_DATE = "Input arrive date: ";
     public static final String INPUT_MOBILE_PHONE = "Input mobile phone: ";
     public static final String INPUT_HOME_PHONE = "Input home phone (optional): ";
     public static final String INPUT_EMAIL = "Input e-mail: ";
     public static final String INPUT_COMMENT = "Input comment (optional): ";
-    public static final String INPUT_HOME_ADDRESS = "Input home address.\n ";
+    public static final String INPUT_HOME_ADDRESS = "Input home address.\n";
     public static final String INPUT_POSTAL_INDEX = "postal index: ";
     public static final String INPUT_CITY = "city: ";
     public static final String INPUT_STREET = "street: ";
@@ -28,6 +29,9 @@ public class View {
     public static final String INPUT_FACULTY = "Input faculty (type 1 for FAKS, 2 - FBE, 3 - FBT, 4 - FEA, 5 - FEL, " +
             "6 - FIOT, 7 - FL, 8 - FMM, 9 - FMF, 10 - FPM, 11 - FSP, 12 - IASA, 13 - IEE, 14 - IFF, 15 - IHF, " +
             "16 - ISZZI, 17 - IPT, 18 - ITS, 19 - MMI, 20 - PBF, 21 - RTF, 22 - TEF, 23 - VPI, 24 - XTF, 25 - ZF): ";
+    public static final String INPUT_COURSE = "Input course (type 1 for Double Degree, 2 - Student Exchange): ";
+    public static final String INPUT_PROGRAM_TYPE = "Input mobility program type: ";
+
     public static final String WRONG_INPUT_LAST_NAME = "Wrong last name format. Example: Lovelace, della-Noel, " +
             "d'Artagnan, McCartney, King-Noel. ";
     public static final String WRONG_INPUT_FIRST_NAME = "Wrong first name format. Example: Augusta, John, Maria. ";
@@ -38,9 +42,17 @@ public class View {
             "Wrong email format. Example: postbox@com, a.little.more.unusual98@dept.example.com. ";
     public static final String WRONG_INPUT_POSTAL_INDEX = "Wrong postal index format. Example: 04144. ";
     public static final String WRONG_INPUT_CITY = "Wrong city format. Example: New Hampshire. ";
-    public static final String WRONG_INPUT_STREET = "Wrong street format. Example: 14th Street NW, Khreshchatyk Street";
+    public static final String WRONG_INPUT_STREET =
+            "Wrong street format. Example: 14th Street NW, Khreshchatyk Street. ";
     public static final String WRONG_INPUT_HOUSE_NUMBER = "Wrong house number format. Example: 144b. ";
     public static final String WRONG_INPUT_APARTMENT_NUMBER = "Wrong apartment number format. Example: 1234-1. ";
+    public static final String WRONG_INPUT_FACULTY = "Wrong faculty format. ";
+    public static final String WRONG_INPUT_COURSE = "Wrong course format. Enter number from 1 to 6. ";
+    public static final String WRONG_INPUT_PROGRAM_TYPE = "Wrong mobility program type format. ";
+    public static final String WRONG_INPUT_COUNTRY = "Wrong country format. Example: United States of America. ";
+    public static final String WRONG_INPUT_INSTITUTION_NAME = "Wrong institution name format. Example: NTUU \"KPI\". ";
+    public static final String WRONG_INPUT_DATE = "Wrong date format. Example: 09 Jan 2001. ";
+    public static final String WRONG_INPUT_COMMENT = "Wrong comment format. ";
 
     public void printMessage(String message){
         System.out.println(message);

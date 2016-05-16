@@ -11,14 +11,14 @@ public class AcademicMobilityParticipant {
     private String mobilePhone;
     private String homePhone; // (optional)
     private String email;
-    // home address:
-    // - Индекс
+//     home address:
+//    - Индекс
 //    - город проживания
 //    - улица
 //    - номер дома
 //    - номер квартиры
-//    собрать по правилам почты адрес
-//    -	собрать обычный адрес
+// - собрать по правилам почты адрес
+// - собрать обычный адрес
     private String comment; // optional
     private Faculty faculty;
     private MobilityProgramType programType;
@@ -26,7 +26,7 @@ public class AcademicMobilityParticipant {
     private String univCountry;
     private String univCity;
     private String univ;
-    // univ adress
+    // univ address
     private String departureDate;
     private String arriveDate;
 
